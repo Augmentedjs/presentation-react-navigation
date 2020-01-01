@@ -1,6 +1,6 @@
 {
   "name": "@augmentedjs/presentation-react-navigation",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Augmented.js Next's Presentation - Navigation Components (React.js)",
   "main": "public/presentation-react-navigation.js",
   "scripts": {
