@@ -13,7 +13,9 @@ class HamburgerMenu extends React.Component {
   };
 
   navigate(fn) {
-    fn();
+    if (fn) {
+      fn();
+    }
     this.toggle();
   };
 
@@ -28,21 +30,24 @@ class HamburgerMenu extends React.Component {
   };
 
   _renderItems() {
-    return this.props.items.map( (data, index) => {
-      if (data.spacer) {
-        return (
-          <div className="spacer"></div>
-        );
-      } else {
-        return(
-          <div key={ data.id } id={ data.id } onClick={ () => this.navigate(data.click) } title={ (data.title) ? data.title : "" }>
-            <a href={ (this.props.hash ? `#/${data.id}` : `/${data.id}`) } className="scroll">
-              {( (data.icon) ? <i className="material-icons md-dark">{ data.icon }</i> : "" )}{ (data.title) ? data.title : "" }
-            </a>
-          </div>
-        );
-      }
-    });
+    if (this.props.items) {
+      return this.props.items.map( (data, index) => {
+        if (data.spacer) {
+          return (
+            <div className="spacer"></div>
+          );
+        } else {
+          return(
+            <div key={ data.id } id={ data.id } onClick={ () => this.navigate(data.click) } title={ (data.title) ? data.title : "" }>
+              <a href={ (this.props.hash ? `#/${data.id}` : `/${data.id}`) } className="scroll">
+                {( (data.icon) ? <i className="material-icons md-dark">{ data.icon }</i> : "" )}{ (data.title) ? data.title : "" }
+              </a>
+            </div>
+          );
+        }
+      });
+    }
+    return <span></span>
   };
 
   render() {
